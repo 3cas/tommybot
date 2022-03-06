@@ -7,6 +7,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 
 tommy_media = "https://cdn.discordapp.com/attachments/935315804067594290/947901876081422416/TOMMY.PNG"
 jinx_media = "https://cdn.discordapp.com/attachments/935315804067594290/947901923078586480/jinx.png"
+soggycat_media = "https://cdn.discordapp.com/attachments/935315804067594290/950099510175088690/soggycat.jpg"
 emoji_up = "<:tommythumbsup:946649096645664768>"
 emoji_down = "<:tommythumbsdown:947042965484896287>"
 
@@ -25,6 +26,10 @@ async def tommy(ctx):
 @bot.command()
 async def jinx(ctx):
     await ctx.send(jinx_media)
+
+@bot.command()
+async def soggycat(ctx):
+    await ctx.send(soggycat_media)
 
 @bot.command()
 async def poll(ctx):
