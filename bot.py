@@ -7,7 +7,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 
 tommy_media = "https://cdn.discordapp.com/attachments/935315804067594290/947901876081422416/TOMMY.PNG"
 jinx_media = "https://cdn.discordapp.com/attachments/935315804067594290/947901923078586480/jinx.png"
-soggycat_media = "https://cdn.discordapp.com/attachments/935315804067594290/950099510175088690/soggycat.jpg"
+soggycat_media = "https://cdn.discordapp.com/attachments/935315804067594290/950201643578822686/soggycat.png"
 emoji_up = "<:tommythumbsup:946649096645664768>"
 emoji_down = "<:tommythumbsdown:947042965484896287>"
 
