@@ -4,7 +4,8 @@ import os
 import logging
 import random
 
-TOKEN = os.getenv("DISCORD_TOKEN")
+# TOKEN = os.getenv("DISCORD_TOKEN")
+TOKEN = "OTQ3OTA1NzM3NjcyMjQ1MzA5.Yh0EAw.xqMnHuOtzEWSZRqpFStECIUYP4Y"
 
 tommy_media = ["https://cdn.discordapp.com/attachments/935315804067594290/947901876081422416/TOMMY.PNG",
                "https://cdn.discordapp.com/attachments/947379907959328769/950612810474324058/20220307_184343.jpg",
@@ -18,8 +19,6 @@ tommy_media = ["https://cdn.discordapp.com/attachments/935315804067594290/947901
                "https://cdn.discordapp.com/attachments/947379907959328769/950612840232935474/FMoa4L1XwAEbG2w.jpeg",
                "https://cdn.discordapp.com/attachments/947379907959328769/950612840505573406/FMxrD_wXsAMAqF0.jpeg",
                "https://cdn.discordapp.com/attachments/947379907959328769/950612840862076948/FMxrDffXsAUU4aS.jpeg"]
-
-mod_role = Client.get_guild(938378867293442069).get_role(938381720292577300)
 
 bot = commands.Bot(command_prefix="t!", description="Tommybot is a custom bot made for Tommylore and Sas, made by >>#0001.", owner_ids={889744885937225739,743340045628342324})
 
@@ -52,14 +51,14 @@ async def poll(ctx):
 
 @bot.command()
 async def activity(ctx, *args):
-    if mod_role in ctx.author.roles or bot.is_owner(ctx.author):
+    if bot.get_guild(938378867293442069).get_role(938381720292577300) in ctx.author.roles or bot.is_owner(ctx.author):
     
         args = list(args)
         try:
             status_type = args[0]
             new_status = ' '.join(args[1:])
         except:
-            await ctx.send(embed=Embed(title="Error",description=f"Not enough arguments\n\nProper command format: `t!botactivity <status type> <status>`\nStatus type: `playing`, `streaming`, `listening`, `watching`", color=0xff0000))
+            await ctx.send(embed=Embed(title="Error",description=f"Not enough arguments\n\nProper command format: `t!activity <status type> <status>`\nStatus type: `playing`, `streaming`, `listening`, `watching`", color=0xff0000))
         else:
             if len(args) > 1:
                 if status_type == "playing":
@@ -75,11 +74,15 @@ async def activity(ctx, *args):
                     await bot.change_presence(activity=Activity(type=ActivityType.watching, name=new_status))
                     await ctx.send(embed=Embed(title="Success",description=f"Activity successfully changed to \"Watching {new_status}\".", color=0x00ff00))
                 else:
-                    await ctx.send(embed=Embed(title="Error",description=f"Improper arguments\n\nProper command format: `t!botactivity <status type> <status>`\nStatus type: `playing`, `streaming`, `listening`, `watching`", color=0xff0000))
+                    await ctx.send(embed=Embed(title="Error",description=f"Improper arguments\n\nProper command format: `t!activity <status type> <status>`\nStatus type: `playing`, `streaming`, `listening`, `watching`", color=0xff0000))
             else:
-                await ctx.send(embed=Embed(title="Error",description=f"Not enough arguments\n\nProper command format: `t!botactivity <status type> <status>`\nStatus type: `playing`, `streaming`, `listening`, `watching`", color=0xff0000))
+                await ctx.send(embed=Embed(title="Error",description=f"Not enough arguments\n\nProper command format: `t!activity <status type> <status>`\nStatus type: `playing`, `streaming`, `listening`, `watching`", color=0xff0000))
 
     else:
         await ctx.send("lol no")
+
+@bot.command()
+async def tommymusic(ctx):
+    await ctx.send("https://cdn.discordapp.com/attachments/935315804067594290/950854749010399334/final_621b16be7b8326006f488eb3_141970.mp4")
 
 bot.run(TOKEN)
