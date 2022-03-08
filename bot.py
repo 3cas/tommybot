@@ -19,6 +19,8 @@ tommy_media = ["https://cdn.discordapp.com/attachments/935315804067594290/947901
                "https://cdn.discordapp.com/attachments/947379907959328769/950612840505573406/FMxrD_wXsAMAqF0.jpeg",
                "https://cdn.discordapp.com/attachments/947379907959328769/950612840862076948/FMxrDffXsAUU4aS.jpeg"]
 
+mod_role = Client.get_guild(938378867293442069).get_role(938381720292577300)
+
 bot = commands.Bot(command_prefix="t!", description="Tommybot is a custom bot made for Tommylore and Sas, made by >>#0001.", owner_ids={889744885937225739,743340045628342324})
 
 logging.basicConfig(level=logging.INFO)
@@ -47,5 +49,37 @@ async def soggycat(ctx):
 async def poll(ctx):
     await ctx.message.add_reaction("<:tommythumbsup:946649096645664768>")
     await ctx.message.add_reaction("<:tommythumbsdown:947042965484896287>")
+
+@bot.command()
+async def activity(ctx, *args):
+    if mod_role in ctx.author.roles or bot.is_owner(ctx.author):
+    
+        args = list(args)
+        try:
+            status_type = args[0]
+            new_status = ' '.join(args[1:])
+        except:
+            await ctx.send(embed=Embed(title="Error",description=f"Not enough arguments\n\nProper command format: `t!botactivity <status type> <status>`\nStatus type: `playing`, `streaming`, `listening`, `watching`", color=0xff0000))
+        else:
+            if len(args) > 1:
+                if status_type == "playing":
+                    await bot.change_presence(activity=Game(name=new_status))
+                    await ctx.send(embed=Embed(title="Success",description=f"Activity successfully changed to \"Playing {new_status}\".", color=0x00ff00))
+                elif status_type == "streaming":
+                    await bot.change_presence(activity=Streaming(name=new_status, url="https://google.com"))
+                    await ctx.send(embed=Embed(title="Success",description=f"Activity successfully changed to \"Streaming {new_status}\".", color=0x00ff00))
+                elif status_type == "listening":
+                    await bot.change_presence(activity=Activity(type=ActivityType.listening, name=new_status))
+                    await ctx.send(embed=Embed(title="Success",description=f"Activity successfully changed to \"Listening to {new_status}\".", color=0x00ff00))
+                elif status_type == "watching":
+                    await bot.change_presence(activity=Activity(type=ActivityType.watching, name=new_status))
+                    await ctx.send(embed=Embed(title="Success",description=f"Activity successfully changed to \"Watching {new_status}\".", color=0x00ff00))
+                else:
+                    await ctx.send(embed=Embed(title="Error",description=f"Improper arguments\n\nProper command format: `t!botactivity <status type> <status>`\nStatus type: `playing`, `streaming`, `listening`, `watching`", color=0xff0000))
+            else:
+                await ctx.send(embed=Embed(title="Error",description=f"Not enough arguments\n\nProper command format: `t!botactivity <status type> <status>`\nStatus type: `playing`, `streaming`, `listening`, `watching`", color=0xff0000))
+
+    else:
+        await ctx.send("lol no")
 
 bot.run(TOKEN)
