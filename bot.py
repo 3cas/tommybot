@@ -84,4 +84,8 @@ async def activity(ctx, *args):
 async def tommymusic(ctx):
     await ctx.send("https://cdn.discordapp.com/attachments/935315804067594290/950854749010399334/final_621b16be7b8326006f488eb3_141970.mp4")
 
+@bot.command()
+async def dog(ctx):
+    await ctx.send("https://media.discordapp.net/attachments/938385918480486421/950943566832750602/Untitled_design_6.gif")
+
 bot.run(TOKEN)
