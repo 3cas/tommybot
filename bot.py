@@ -88,5 +88,9 @@ async def tommymusic(ctx):
 async def dog(ctx):
     await ctx.send("https://media.discordapp.net/attachments/938385918480486421/950943566832750602/Untitled_design_6.gif")
     
+@bot.command()
+async def test(ctx):
+    await ctx.send("goblin")
+    
 # add new commands before this line
 bot.run(TOKEN)
