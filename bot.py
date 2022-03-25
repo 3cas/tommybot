@@ -19,7 +19,7 @@ tommy_media = ["https://cdn.discordapp.com/attachments/935315804067594290/947901
                "https://cdn.discordapp.com/attachments/947379907959328769/950612840505573406/FMxrD_wXsAMAqF0.jpeg",
                "https://cdn.discordapp.com/attachments/947379907959328769/950612840862076948/FMxrDffXsAUU4aS.jpeg"]
 
-bot = commands.Bot(command_prefix="t!", description="Tommybot is a custom bot made for Tommylore and Sas, made by >>#0001.", owner_ids={889744885937225739,743340045628342324,956698441361260567})
+bot = commands.Bot(command_prefix="t!", description="Tommybot is a custom bot made for Tommylore and Sas, made by >>#0001.", owner_ids={956698441361260567,743340045628342324,901978388829450291})
 
 logging.basicConfig(level=logging.INFO)
 
