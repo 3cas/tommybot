@@ -50,7 +50,7 @@ async def poll(ctx):
 
 @bot.command()
 async def activity(ctx, *args):
-    if bot.get_guild(938378867293442069).get_role(938381720292577300) in ctx.author.roles or bot.is_owner(ctx.author):
+    if await bot.is_owner(ctx.author):
     
         args = list(args)
         try:
